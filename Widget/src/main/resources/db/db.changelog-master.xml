@@ -1,0 +1,42 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet  author="classend"  id="widget">
+        <createTable tableName="widget">
+            <column name="widget_id" type="varchar(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="widget_name" type="varchar(20)"/>
+            <column name="widget_type" type="varchar(50)"/>
+        </createTable>
+    </changeSet>
+    
+    <changeSet author="classend" id="user_dashboard" >
+        <createTable tableName="user_dashboard">
+            <column name="user_dashboard_id" type="varchar(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="user_dashboard_name" type="varchar(20)"/>
+            <column name="user_id" type="varchar(36)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="classend" id="user_widget" >
+        <createTable tableName="user_widget">
+            <column name="user_widget_id" type="varchar(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="user_dashboard_id" type="varchar(36)">
+                    <constraints foreignKeyName="fk_user_dashboard_id" references="user_dashboard(user_dashboard_id)" deleteCascade="true"/>
+            </column>
+            <column name="widget_id" type="varchar(36)">
+                <constraints foreignKeyName="fk_widget_id" references="widget(widget_id)" deleteCascade="true"/>
+            </column>
+            <column name="position_x" type="varchar(20)"/>
+            <column name="position_y" type="varchar(20)"/>
+        </createTable>
+    </changeSet>
+
+
+</databaseChangeLog>
