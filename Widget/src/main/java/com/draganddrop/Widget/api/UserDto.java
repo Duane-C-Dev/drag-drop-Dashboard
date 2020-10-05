@@ -1,4 +1,4 @@
-package com.onboarding.api;
+package com.draganddrop.Widget.api;
 
 import lombok.Data;
 import lombok.experimental.Accessors;

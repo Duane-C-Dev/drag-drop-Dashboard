@@ -1,4 +1,4 @@
-package com.onboarding.entity;
+package com.draganddrop.Widget.entities;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,14 +12,14 @@ import javax.persistence.Table;
 import java.util.UUID;
 
 @Entity
-@Table(name = "usr")
+@Table(name = "user")
 @Getter
 @Setter
 @Accessors(chain = true)
 public class User {
 
 	@Id
-	@Column(name = "usr_id")
+	@Column(name = "user_id")
 	@Type(type="uuid-char")
 	private UUID userId;
 	@Column(name = "username")

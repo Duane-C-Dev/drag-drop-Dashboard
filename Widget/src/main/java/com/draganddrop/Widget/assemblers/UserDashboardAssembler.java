@@ -27,8 +27,13 @@ public class UserDashboardAssembler {
         return disassembleInto(dto, UserDashboard.newInstance());
     }
 
+    //todo create error for attempt to update userID
     public UserDashboard disassembleInto(UserDashboardDto dto, UserDashboard entity) {
-        return entity
-                .setUserDashboardName(dto.getUserDashboardName());
+        if (entity.getUserId() == null) {
+            entity.setUserId(dto.getUserId());
+        }
+
+        entity.setUserDashboardName(dto.getUserDashboardName());
+        return entity;
     }
 }

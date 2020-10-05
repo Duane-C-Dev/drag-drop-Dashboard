@@ -9,12 +9,12 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("api/v1/userDashboard/{userDashboardId}/userWidget")
+@RequestMapping("api/v1/users/{userId}/userDashboards/{userDashboardId}/userWidgets")
 public class UserWidgetController {
 
     UserWidgetService userwidgetService;
 
-    UserWidgetController(UserWidgetService userWidgetService) {
+    public UserWidgetController(UserWidgetService userWidgetService) {
         this.userwidgetService = userWidgetService;
     }
 

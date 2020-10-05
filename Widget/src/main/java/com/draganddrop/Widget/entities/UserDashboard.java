@@ -30,9 +30,7 @@ public class UserDashboard {
     public static UserDashboard newInstance() {
         UserDashboard userDashboard = new UserDashboard();
         userDashboard.setUserDashboardId(UUID.randomUUID());
-        userDashboard.setUserId(UUID.randomUUID());
         return userDashboard;
     }
 
-    //todo Properly Handle User Creation
 }

@@ -5,6 +5,7 @@ import com.draganddrop.Widget.assemblers.UserWidgetAssembler;
 import com.draganddrop.Widget.entities.UserWidget;
 import com.draganddrop.Widget.exceptions.NotFoundException;
 import com.draganddrop.Widget.repositories.UserWidgetRepository;
+import com.draganddrop.Widget.validators.UserWidgetValidator;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,10 +16,12 @@ public class UserWidgetService {
 
     private final UserWidgetAssembler userWidgetAssembler;
     private final UserWidgetRepository userWidgetRepository;
+    private final UserWidgetValidator userWidgetValidator;
 
-    public UserWidgetService(UserWidgetAssembler userWidgetAssembler, UserWidgetRepository userWidgetRepository) {
+    public UserWidgetService(UserWidgetAssembler userWidgetAssembler, UserWidgetRepository userWidgetRepository, UserWidgetValidator userWidgetValidator) {
         this.userWidgetAssembler = userWidgetAssembler;
         this.userWidgetRepository = userWidgetRepository;
+        this.userWidgetValidator = userWidgetValidator;
     }
 
     public List<UserWidgetDto> findAll(UUID userDashboardId) {
@@ -32,6 +35,7 @@ public class UserWidgetService {
     }
 
     public void create(UserWidgetDto dto) {
+        userWidgetValidator.validateAndThrow(dto);
         UserWidget entity = userWidgetAssembler.disassemble(dto);
         userWidgetRepository.save(entity);
     }
@@ -47,6 +51,7 @@ public class UserWidgetService {
     }
 
     public void update(UUID userWidgetDto, UserWidgetDto dto) {
+        userWidgetValidator.validateAndThrow(dto);
         userWidgetRepository.findById(userWidgetDto)
                 .map(entity -> userWidgetAssembler.disassembleInto(dto, entity))
                 .map(userWidgetRepository::save)

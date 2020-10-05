@@ -5,6 +5,7 @@ import com.draganddrop.Widget.assemblers.WidgetAssembler;
 import com.draganddrop.Widget.entities.Widget;
 import com.draganddrop.Widget.exceptions.NotFoundException;
 import com.draganddrop.Widget.repositories.WidgetRepository;
+import com.draganddrop.Widget.validators.WidgetValidator;
 import org.springframework.stereotype.Service;
 
 
@@ -16,10 +17,12 @@ public class WidgetService {
 
     private final WidgetRepository widgetRepository;
     private final WidgetAssembler widgetAssembler;
+    private final WidgetValidator widgetValidator;
 
-    WidgetService(WidgetRepository widgetRepository, WidgetAssembler widgetAssembler) {
+    public WidgetService(WidgetRepository widgetRepository, WidgetAssembler widgetAssembler, WidgetValidator widgetValidator) {
         this.widgetRepository = widgetRepository;
         this.widgetAssembler = widgetAssembler;
+        this.widgetValidator = widgetValidator;
     }
 
     public List<WidgetDto> findAll() {
@@ -33,6 +36,7 @@ public class WidgetService {
     }
 
     public void create(WidgetDto dto) {
+        widgetValidator.validateAndThrow(dto);
         Widget entity = widgetAssembler.disassemble(dto);
         widgetRepository.save(entity);
     }
@@ -48,6 +52,7 @@ public class WidgetService {
     }
 
     public void update(UUID widgetId, WidgetDto dto) {
+        widgetValidator.validateAndThrow(dto);
         widgetRepository.findById(widgetId)
             .map(entity -> widgetAssembler.disassembleInto(dto, entity))
             .map(widgetRepository::save)

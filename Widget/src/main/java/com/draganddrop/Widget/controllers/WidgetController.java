@@ -12,10 +12,9 @@ import java.util.UUID;
 @RequestMapping("api/v1/widgets")
 public class WidgetController {
 
-
     private final WidgetService widgetService;
 
-    WidgetController(WidgetService widgetService) {
+    public WidgetController(WidgetService widgetService) {
         this.widgetService = widgetService;
     }
 

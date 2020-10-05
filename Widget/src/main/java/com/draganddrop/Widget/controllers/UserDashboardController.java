@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("api/v1/userDashboards")
+@RequestMapping("api/v1/users/{userId}/userDashboards")
 public class UserDashboardController {
 
     private final UserDashboardService userDashboardService;
@@ -19,8 +19,8 @@ public class UserDashboardController {
     }
 
     @GetMapping
-    public List<UserDashboardDto> findAll() {
-        return userDashboardService.findAll();
+    public List<UserDashboardDto> findAll(@PathVariable("userId") UUID userId) {
+        return userDashboardService.findAll(userId);
     }
 
     @GetMapping("/{userDashboardId}")

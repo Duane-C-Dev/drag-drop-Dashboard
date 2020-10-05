@@ -1,7 +1,7 @@
-package com.onboarding.assembler;
+package com.draganddrop.Widget.assemblers;
 
-import com.onboarding.api.UserDto;
-import com.onboarding.entity.User;
+import com.draganddrop.Widget.api.UserDto;
+import com.draganddrop.Widget.entities.User;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

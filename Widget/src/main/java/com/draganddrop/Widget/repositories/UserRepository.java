@@ -1,14 +1,13 @@
-package com.onboarding.repository;
+package com.draganddrop.Widget.repositories;
 
-import com.onboarding.entity.User;
+
+import com.draganddrop.Widget.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import java.util.List;
+
 import java.util.UUID;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, UUID> {
-	boolean existsByUserId(UUID userId);
 	boolean existsUserByUsername(String username);
-	List<User> findAllByLastNameIgnoreCase(String lastName);
 }
