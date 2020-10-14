@@ -3,12 +3,11 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {UserModel} from "../models/user.model";
 
+const BASE_URI = 'api/v1/users/';
+
 @Injectable({
   providedIn: 'root'
 })
-
-const BASE_URI = 'api/v1/users/';
-
 export class UserService {
 
   constructor(private http: HttpClient) { }
@@ -29,7 +28,7 @@ export class UserService {
     return this.http.delete<void>(BASE_URI + userId);
   }
 
-  update(userId: string, user: UserModel): Observable<void> {
+  updateUser(userId: string, user: UserModel): Observable<void> {
     return this.http.put<void>(BASE_URI + userId, user);
   }
 }

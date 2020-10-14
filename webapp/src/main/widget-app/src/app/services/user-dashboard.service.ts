@@ -3,12 +3,11 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {UserDashboardModel} from "../models/user-dashboard.model";
 
+const BASE_URI = 'api/v1/users/';
+
 @Injectable({
   providedIn: 'root'
 })
-
-const BASE_URI = 'api/v1/users/';
-
 export class UserDashboardService {
 
   constructor(private http: HttpClient) { }

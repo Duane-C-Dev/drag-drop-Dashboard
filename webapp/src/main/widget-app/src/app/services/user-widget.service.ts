@@ -3,12 +3,11 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {UserWidgetModel} from "../models/user-widget.model";
 
+const BASE_URI = 'api/v1/users/';
+
 @Injectable({
   providedIn: 'root'
 })
-
-const BASE_URI = 'api/v1/users/';
-
 export class UserWidgetService {
 
   constructor(private http: HttpClient) { }
