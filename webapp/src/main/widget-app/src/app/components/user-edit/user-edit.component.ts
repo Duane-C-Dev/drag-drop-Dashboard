@@ -21,6 +21,7 @@ export class UserEditComponent implements OnInit {
               private route: ActivatedRoute) {
 
     this.form = this.fb.group({
+      'userId': ['', Validators.required],
       'username': ['', Validators.required],
       'firstName': ['', Validators.required],
       'lastName': ['', Validators.required]
@@ -39,6 +40,7 @@ export class UserEditComponent implements OnInit {
   }
 
   onSubmit() { //todo there is something broken when checking for unique updated username( has to be updated or server error)
+    if(this.form.value.username)
     this.userService.updateUser(this.userId, this.form.value).subscribe(() => this.router.navigateByUrl(''));
   }
 

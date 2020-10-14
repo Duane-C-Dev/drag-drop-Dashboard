@@ -1,16 +1,39 @@
-.wrapper {
+.container-fluid {
   height: 100%;
 }
 
+.my-row {
+  height: 100%;
+  padding: 0;
+}
+
+.my-col {
+  background-color: darkcyan;
+  border: solid black .025rem;
+  height: 100%;
+  padding: 0;
+}
+
+.d-row {
+  height: 50%;
+  margin: 0;
+  padding: 0;
+}
+
+.d-col {
+  border: solid 1px black;
+  padding: 0;
+}
+
 .sidebar {
-  float: left;
+  background-color: cadetblue;
+  height: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-direction: column;
-  width: 16rem;
-  height: 100%;
-  background-color: cadetblue;
 }
+
 .widgetList {
   display: flex;
   flex-direction: column;
@@ -19,20 +42,12 @@
   height: 100%;
 }
 
-.dashboard {
-  position: absolute;
-  left: 16rem;
-  width: 100%;
-  height: 100%;
-  background-color: darkcyan;
-}
-
 .delete-zone {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 16rem;
-  width: 16rem;
+  width: 100%;
   background-color: indianred;
 }
 
@@ -44,6 +59,9 @@
   width: 7rem;
   background-color: chocolate;
   border: solid .025rem;
+}
+
+.resize {
   resize: both;
   overflow: auto;
 }
@@ -57,21 +75,3 @@
   background-color: rgba(0, 0, 0, 0.4);
   cursor: move;
 }
-
-.my-row {
-  border: solid black .025rem;
-  height: auto;
-  min-height: 50% !important;
-  padding: 0;
-}
-
-.my-col {
-  border: solid black .025rem;
-  height: auto;
-  min-height: 50% !important;
-  padding: 0;
-}
-
-
-
-
