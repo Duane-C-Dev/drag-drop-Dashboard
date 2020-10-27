@@ -1,22 +1,36 @@
 <div class="container-fluid">
-  <div class="row my-row">
 
+  <div class="row h-row">
+    <div class="col-2 h-col flex justify-content-center">
+      <button class="btn-primary" (click)="onUsers()">Users</button>
+    </div>
+    <div class="col-8 h-col">
+<!--      <button *ngFor="let dashboard of userDashboardList; index as i;" class="button btn-primary" (click)="onLoadDashboard(i)">{{dashboard.userDashboardName}}</button>-->
+    </div>
+<!--      <div class="col-2 h-col flex justify-content-around">-->
+<!--        <button class="button btn-secondary" (click)="onAddDashboard()" >Add Dashboard</button>-->
+<!--        <button class="button btn-secondary" (click)="onDeleteDashboard()">Delete Dashboard</button>-->
+<!--      </div>-->
+  </div>
+
+  <div class="row my-row">
     <div class="col-2 my-col sidebar">
-      <div class="widgetList" [dragula]="widgets" id="widgetList">
-        <div *ngFor="let widget of widgetList" class="box"><span class="handle"> {{widget.valueOf()}} </span></div>
+      <div class="widgetList" [dragula]="widgets" [(dragulaModel)]="widgetList" id="widgetList">
+        <div *ngFor="let widget of widgetList" class="box"><span class="handle"> {{widget.widgetName}} </span></div>
       </div>
       <div class="delete-zone" id="delete-zone">Delete Zone</div>
     </div>
-
     <div class="col-10 my-col">
+      <div class="row"></div>
       <div class="row d-row">
-        <div class="col d-col" [dragula]="widgets"></div>
-        <div class="col d-col" [dragula]="widgets"></div>
+        <div class="col d-col" id="(1,1)" [dragula]="widgets" [(dragulaModel)]="userWidgetList"></div>
+        <div class="col d-col" id="(1,2)" [dragula]="widgets" [(dragulaModel)]="userWidgetList"></div>
       </div>
       <div class="row d-row">
-        <div class="col d-col" [dragula]="widgets"></div>
-        <div class="col d-col" [dragula]="widgets"></div>
+        <div class="col d-col" id="(2,1)" [dragula]="widgets" [(dragulaModel)]="userWidgetList"></div>
+        <div class="col d-col" id="(2,2)" [dragula]="widgets" [(dragulaModel)]="userWidgetList"></div>
       </div>
     </div>
   </div>
+
 </div>

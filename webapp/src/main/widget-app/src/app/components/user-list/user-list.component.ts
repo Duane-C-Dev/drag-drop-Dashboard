@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {UserModel} from "../../models/user.model";
 import {UserService} from "../../services/user.service";
 import {NavigationExtras, Router} from "@angular/router";
+import {UserDashboardService} from "../../services/user-dashboard.service";
+import {UserDashboardModel} from "../../models/user-dashboard.model";
 
 @Component({
   selector: 'app-user-list',
@@ -13,6 +15,7 @@ export class UserListComponent implements OnInit {
   users: UserModel[] = [];
 
   constructor(private userService: UserService,
+              private userDashboardService: UserDashboardService,
               private router: Router) { }
 
   ngOnInit(): void {
@@ -43,8 +46,19 @@ export class UserListComponent implements OnInit {
         'userId': userId
       }
     };
-    this.router.navigate(['/userDashboard'], navigationExtras);
+
+    this.userDashboardService.getAllUserDashboard(userId).subscribe( dashboards => {
+      if (dashboards.length < 1) {
+        let defaultDashboard: UserDashboardModel = {userDashboardId: '', userDashboardName: 'Default', userId: userId};
+        this.userDashboardService.createUserDashboard(userId,defaultDashboard).subscribe(() => {
+          this.router.navigate(['/userDashboard'], navigationExtras);
+        });
+      } else {
+        this.router.navigate(['/userDashboard'], navigationExtras);
+      }
+    });
   }
+
   // private setQueryParams(paramArray: string[]){
   //   let params: { [index: string] : {value: string}} = {};
   //   for(let param of paramArray) {

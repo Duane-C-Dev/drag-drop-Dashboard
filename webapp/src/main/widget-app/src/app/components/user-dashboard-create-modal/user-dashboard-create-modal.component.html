@@ -1,0 +1,15 @@
+<div class="modal-header">
+  <h4 class="modal-title">Create Dashboard</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">x</button>
+</div>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="userDashboardName">Dashboard Name:</label>
+      <input type="text" class="form-control" id="userDashboardName" formControlName="userDashboardName">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary"> Save </button>
+  </div>
+</form>

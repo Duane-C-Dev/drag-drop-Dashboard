@@ -12,11 +12,11 @@ export class UserWidgetService {
 
   constructor(private http: HttpClient) { }
 
-  findAllUserWidget(userId: string, userDashboardId: string): Observable<UserWidgetModel[]> {
+  getAllUserWidget(userId: string, userDashboardId: string): Observable<UserWidgetModel[]> {
     return this.http.get<UserWidgetModel[]>(BASE_URI + userId + '/userDashboards/' + userDashboardId + '/userWidgets');
   }
 
-  findUserWidget(userId: string, userDashboardId: string, userWidgetId: string): Observable<UserWidgetModel> {
+  getUserWidget(userId: string, userDashboardId: string, userWidgetId: string): Observable<UserWidgetModel> {
     return this.http.get<UserWidgetModel>(BASE_URI + userId + '/userDashboards/' + userDashboardId + '/userWidgets/' + userWidgetId);
   }
 
